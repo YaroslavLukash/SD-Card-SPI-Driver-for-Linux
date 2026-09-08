@@ -9,3 +9,11 @@ Linux kernel block device driver for SD/SDHC cards made to operate over SPI with
 ![](/assets/photo_2026-09-08_11-03-54.jpg)  
 ### Raspbarry pi 3.2b
 ![](/assets/photo_2026-09-08_11-03-52.jpg)
+## Testing  
+
+### Buil and load the module
+* make
+* sudo insmod sd\_driver.ko
+* sudo dmesg  
+![](/assets/photo_2026-09-08_11-03-44.jpg)
+![](/assets/photo_2026-09-08_11-03-45.jpg)
