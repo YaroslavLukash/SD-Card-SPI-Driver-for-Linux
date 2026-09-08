@@ -36,4 +36,4 @@ Linux kernel block device driver for SD/SDHC cards made to operate over SPI with
 * sudo umount test/
 * sudo mount /dev/sd\_card-yaroslav test/
 * cat test/temp.txt
-![](/assert/photo_2026-09-08_11-03-50.jpg)
+![](/assets/photo_2026-09-08_11-03-50.jpg)
