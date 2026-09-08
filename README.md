@@ -5,3 +5,7 @@ Linux kernel block device driver for SD/SDHC cards made to operate over SPI with
 ## Setup  
 
 ![Foto of SD card and resbarry pi connected via jumper wires.](/assets/photo_2026-09-08_11-03-59.jpg)
+### SD card module 5v - 3.3v stepdown
+![](/assets/photo_2026-09-08_11-03-54.jpg)  
+### Raspbarry pi 3.2b
+![](/assets/photo_2026-09-08_11-03-52.jpg)
