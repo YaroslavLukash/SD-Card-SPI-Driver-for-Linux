@@ -1,18 +1,44 @@
-# SD-Card-SPI-Driver-for-Linux
+# SD-card SPI Driver for Linux  
 
-Linux kernel block device driver for SD/SDHC cards made to operate over SPI withSD card on embedded systems. This driver registers SD card as regular block device (/dev/sd\_card-yaroslav).
-  
+Linux kernel block device driver for SD/SDHC cards made to operate over SPI with SD-card on embedded systems. This driver registers the SD-card as a regular block device (/dev/sd\_card-yaroslav). Implemented SD-card communication, block-level read/write operations, device registration, and filesystem persistence testing on Raspberry Pi hardware.
+## Technologies  
+
+* Linux kernel API for block devices (bio\_for\_each\_segment, gendisk, bio, bio\_vec...)
+* SPI protocol and Linux kernel SPI subsystem
+* Device tree and device binding
+* SD-card protocol (CMD0, ACMD41, CMD17, CMD24...)
+* Make utility 
+* Synchronization (mutex\_t, spin\_lock\_t)
+## Implementation 
+ 
+                +------------+
+                |Raspberry Pi|
+                +------------+
+                      |
+                      | Kernel Block I/O requests
+                      |
+                +------------+
+                | Our Driver |
+                +------------+
+                      |
+                      |  Breaks up I/O requests into sequence of single-sector read/write commands in SD-card format
+                      |
+                +------------+
+                |On-board spi|
+                |Controller  |
+                +------------+
+                      |
+                      |
+                      |
+                +-----------+
+                |  SD-card  |
+                +-----------+
 ## Setup  
 
-![Foto of SD card and rasberry pi connected via jumper wires.](/assets/photo_2026-09-08_11-03-59.jpg)  
-
-### SD card module 5v - 3.3v stepdown
-![](/assets/photo_2026-09-08_11-03-54.jpg)  
-### Raspbarry pi 3.2b  
-![](/assets/photo_2026-09-08_11-03-52.jpg)
+![Photo of SD card and Raspberry Pi connected via jumper wires.](/assets/photo_2026-09-08_11-03-59.jpg)  
 
 ## Testing  
-### 1. Buil and load the module
+### 1. Build and load the module
 
 * make
 * sudo insmod sd\_driver.ko
@@ -37,3 +63,13 @@ Linux kernel block device driver for SD/SDHC cards made to operate over SPI with
 * sudo mount /dev/sd\_card-yaroslav test/
 * cat test/temp.txt
 ![](/assets/photo_2026-09-08_11-03-50.jpg)
+## Limitations
+
+This project is intended as an experimental/educational Linux kernel
+driver.
+
+Current limitations include:
+
+* Tested on Raspberry Pi hardware only
+* Supports SD/SDHC cards
+* No support for multi sector read/write commands
